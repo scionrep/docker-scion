@@ -1,0 +1,38 @@
+===========================================================
+Dockerfile for a Ubuntu RabbitMQ image
+===========================================================
+
+
+DESCRIPTION
+===========
+
+
+DOCKER IMAGE
+============
+
+sudo docker build -t scioncc/scion_rabbitmq:1.0 .
+
+
+USAGE
+=====
+
+Set ENV variables:
+
+Exposes ports:
+    5672: Standard RabbitMQ port
+    15672: Management web UI
+
+# Start as daemon
+sudo docker run --name pg -e POSTGRES_PASSWORD=foo -e POSTGRES_ION_PASSWORD=bar -d scioncc/scion_pg:9.4-1
+
+# Use psql to connect
+sudo docker run -it --link pg:postgres --rm postgres sh -c 'exec psql -h "$POSTGRES_PORT_5432_TCP_ADDR" -p "$POSTGRES_PORT_5432_TCP_PORT" -U postgres'
+
+# To connect using bash
+sudo docker run --rm -it scioncc/scion_pg:9.4-1 bash -l
+
+# Stop daemon
+sudo docker stop pg
+
+# Remove container
+sudo docker rm pg

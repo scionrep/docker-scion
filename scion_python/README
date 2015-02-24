@@ -1,0 +1,16 @@
+===========================================================
+Dockerfile for a Ubuntu Python base image
+===========================================================
+
+
+DOCKER IMAGE
+============
+
+sudo docker build -t scioncc/scion_python:1.0 .
+
+
+USAGE
+=====
+
+sudo docker run --rm -it scioncc/scion_python:1.0 /bin/bash -l
+

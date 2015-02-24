@@ -1,0 +1,17 @@
+===========================================================
+Dockerfile for a SciON Capability Container image
+===========================================================
+
+Based on scioncc/scion_python
+
+
+DOCKER IMAGE
+============
+
+sudo docker build -t scioncc/scion_cc:3.0.0 .
+
+
+USAGE
+=====
+
+sudo docker run --rm -it scioncc/scion_cc:3.0.0 /sbin/my_init -- bash -l
