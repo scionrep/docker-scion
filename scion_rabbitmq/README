@@ -1,0 +1,44 @@
+===========================================================
+Dockerfile for a Ubuntu RabbitMQ image
+===========================================================
+
+
+DESCRIPTION
+===========
+
+Based on dockerfile/rabbitmq:
+    See https://registry.hub.docker.com/u/dockerfile/rabbitmq/
+
+DOCKER IMAGE
+============
+
+sudo docker build -t scioncc/scion_rabbitmq:1.0 .
+
+
+USAGE
+=====
+
+Set ENV variables:
+
+Exposes ports:
+    5672: Standard RabbitMQ port
+    15672: Management web UI
+
+
+# Start as daemon
+sudo docker run --name rabbit -d -p 5672:5672 -p 15672:15672 scioncc/scion_rabbitmq:1.0
+
+# Start as daemon with no ports exposed
+sudo docker run --name rabbit -P -d scioncc/scion_rabbitmq:1.0
+
+# Run rabbitmq-server with persistent shared directories.
+sudo docker run --name rabbit -d -p 5672:5672 -p 15672:15672 -v <log-dir>:/data/log -v <data-dir>:/data/mnesia scioncc/scion_rabbitmq:1.0
+
+# To connect using bash
+sudo docker run --rm -it scioncc/scion_rabbitmq:1.0 bash -l
+
+# Stop daemon
+sudo docker stop rabbit
+
+# Remove container
+sudo docker rm rabbit

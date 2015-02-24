@@ -1,0 +1,42 @@
+===========================================================
+Dockerfile repository for the Scion Capability Container
+
+(C) Individual Contributors, 2015
+Open source under BSD license. See LICENSE for details.
+===========================================================
+
+
+DESCRIPTION
+===========
+
+See also: https://github.com/scionrep/scioncc
+
+
+IMAGES
+======
+
+scion_cc:       Scion CC based on scion_python
+scion_pg:       PostgreSQL and PostGIS
+scion_python:   Ubuntu 14.04 with python and dependencies
+scion_rabbitmq: RabbitMQ and management console
+
+See image directories/README for details
+
+
+USAGE
+=====
+
+To start a ScionCC system, start RabbitMQ, Postgres and ScionCC
+docker containers and link them:
+
+# Start RabbitMQ exposing management Web UI
+sudo docker run --name rabbit -d -p 15672:15672 scioncc/scion_rabbitmq:1.0
+
+# Start PostgreSQL with credentials
+sudo docker run --name pg -e POSTGRES_PASSWORD=foo -e POSTGRES_ION_PASSWORD=bar -d scioncc/scion_pg:9.4-1
+
+# Start container
+sudo docker run --name cc --link pg:postgres --link rabbit:rabbitmq -e POSTGRES_PASSWORD=foo -e POSTGRES_ION_PASSWORD=bar -it scioncc/scion_cc:3.0.0 /sbin/my_init
+
+# Manhole into running ScionCC (exit with Ctrl-D)
+sudo docker exec -it cc bash -l bin/manhole
