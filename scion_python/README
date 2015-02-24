@@ -3,6 +3,13 @@ Dockerfile for a Ubuntu Python base image
 ===========================================================
 
 
+DESCRIPTION:
+============
+
+Based on phusion/baseimage
+    See https://registry.hub.docker.com/u/phusion/baseimage/
+
+
 DOCKER IMAGE
 ============
 

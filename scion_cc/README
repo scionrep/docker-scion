@@ -2,7 +2,15 @@
 Dockerfile for a SciON Capability Container image
 ===========================================================
 
+
+DESCRIPTION
+===========
+
 Based on scioncc/scion_python
+
+Separates files needed for build in ./build and ./run for files for code build
+and files for startup. This way startup can be modified without requiring a
+rebuild of previous layers.
 
 
 DOCKER IMAGE
@@ -15,3 +23,6 @@ USAGE
 =====
 
 sudo docker run --rm -it scioncc/scion_cc:3.0.0 /sbin/my_init -- bash -l
+
+# Run ScionCC with linked RabbitMQ and Postgres
+sudo docker run --rm --link pg:postgres --link rabbit:rabbitmq -e POSTGRES_PASSWORD=foo -e POSTGRES_ION_PASSWORD=bar -it scioncc/scion_cc:3.0.0 /sbin/my_init -- bash -l

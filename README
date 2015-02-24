@@ -15,9 +15,9 @@ See also: https://github.com/scionrep/scioncc
 IMAGES
 ======
 
-scion_python:   Ubuntu 14.04 with python and dependencies
 scion_cc:       Scion CC based on scion_python
 scion_pg:       PostgreSQL and PostGIS
+scion_python:   Ubuntu 14.04 with python and dependencies
 scion_rabbitmq: RabbitMQ and management console
 
 See image directories/README for details
@@ -26,4 +26,5 @@ See image directories/README for details
 USAGE
 =====
 
-To start a
+To start a ScionCC system, start RabbitMQ, Postgres and ScionCC
+docker containers and link them.
